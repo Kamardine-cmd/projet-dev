@@ -5,18 +5,23 @@ pipeline {
 
         stage('Install') {
             steps {
+              dir('devops-project') {
                 sh 'npm install'
             }
         }
 
         stage('Test') {
             steps {
+              dir('devops-project') {
+
                 sh 'npm test'
             }
         }
 
         stage('Build Docker') {
             steps {
+              dir('devops-project') {
+
                 sh 'docker build -t devops-app .'
             }
         }
